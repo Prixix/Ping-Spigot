@@ -1,0 +1,7 @@
+author: Prixix
+main: de.prixix.ping.Main
+version: 1.0
+name: Ping
+
+commands:
+   ping:
