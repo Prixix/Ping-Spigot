@@ -16,8 +16,8 @@ public class Main extends JavaPlugin implements CommandExecutor {
 		
 		config.addDefault("permission", false);
 		config.addDefault("permission_name", "ping.use");
-		config.addDefault("no_permission", "§cYou can't use this command.");
-		config.addDefault("message", "§aYour ping: [ping]ms.");
+		config.addDefault("no_permission", "&cYou can't use this command.");
+		config.addDefault("message", "&aYour ping: [ping]ms.");
 	    config.options().copyDefaults(true);
 	    saveConfig();
 	    
@@ -34,12 +34,12 @@ public class Main extends JavaPlugin implements CommandExecutor {
 			int ping = ((CraftPlayer) p).getHandle().ping; 
 			if(config.getBoolean("permission")) {
 				if(p.hasPermission(config.getString("permission_name"))) {
-					p.sendMessage(config.getString("message").replace("[ping]", String.valueOf(ping)));
+					p.sendMessage(config.getString("message").replace("[ping]", String.valueOf(ping)).replaceAll("&", "§"));
 				} else {
 					p.sendMessage(config.getString("no_permission"));
 				}
 			} else {
-				p.sendMessage(config.getString("message").replace("[ping]", String.valueOf(ping)));
+				p.sendMessage(config.getString("message").replace("[ping]", String.valueOf(ping)).replaceAll("&", "§"));
 			}
 			} else if(args.length == 1){
 				// check other ping
